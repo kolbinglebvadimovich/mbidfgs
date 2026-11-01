@@ -1,0 +1,43 @@
+#include <iostream>
+#include <cmath>
+
+double add(double a, double b) { return a + b; }
+double sub(double a, double b) { return a - b; }
+double mul(double a, double b) { return a * b; }
+
+double div_op(double a, double b) 
+{
+    return (b == 0) ? 0 : a / b;
+}
+
+double pow_op(double base, double exp) 
+{
+    return std::pow(base, exp);
+}
+
+int main() 
+{
+    double x, y;
+    int op;
+
+    std::cout << "Введите два числа: " << std::endl;
+    if (!(std::cin >> x >> y)) return 1;
+
+    std::cout << "Выберите операцию (1=+, 2=-, 3=*, 4=/, 5=^): " << std::endl;
+    std::cin >> op;
+
+    double res = 0;
+    switch (op) {
+        case 1: res = add(x, y); break;
+        case 2: res = sub(x, y); break;
+        case 3: res = mul(x, y); break;
+        case 4: res = div_op(x, y); break;
+        case 5: res = pow_op(x, y); break;
+        default:
+            std::cout << "Неверная операция\n" << std::endl;
+            return 1;
+    }
+
+    std::cout << "Результат: " << res << "\n" << std::endl;
+    return 0;
+}
